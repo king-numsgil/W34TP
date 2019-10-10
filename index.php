@@ -68,6 +68,9 @@
           if(isset($_SESSION["login"])){
         ?>
           <li class="nav-item">
+            <span>Logged as <?=$_SESSION["login"]?></span>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="index.php?page=logout">Log out</a>
           </li>
         <?php
