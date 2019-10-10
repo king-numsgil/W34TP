@@ -2,7 +2,6 @@
 session_start();
 
 if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_GET["page"] . ".php")) {
-	//
 	if (isset($_GET["page"]) == "logout") {
 		session_unset();
 		session_destroy();
@@ -10,16 +9,9 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 	//Renvoyer le user à la page Home en cas d'erreur ou de page manquante ou erronée
 	header("Location:index.php?page=home");
 	die();
-}
-
-  if(isset($_SESSION["login"])){
-    
-  }
-
-?>
+} ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 	<meta charset="utf-8">
@@ -43,7 +35,6 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 	<link href="assets/css/clean-blog.css" rel="stylesheet">
 
 </head>
-
 <body>
 
 <!-- Navigation -->
