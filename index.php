@@ -12,9 +12,9 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 	die();
 }
 
-if (isset($_SESSION["login"])) {
-	echo "not logged";
-}
+  if(isset($_SESSION["login"])){
+    
+  }
 
 ?>
 <!DOCTYPE html>
