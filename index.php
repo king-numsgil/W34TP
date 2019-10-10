@@ -1,6 +1,12 @@
 <?php
-	//echo "Hello World!";
+  session_start();
 
+  if(!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_GET["page"] . ".php")){
+    //Renvoyer le user à la page Home en cas d'erreur ou de page manquante ou erroné
+    header("Location:index.php?page=home");
+    die();
+
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,8 +82,10 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-	      <?php // Contenu principal pour la page!!
-	      // <== YEET HERE!
+	      <?php 
+          // Contenu principal pour la page!!
+          // <== YEETAGE HERE!
+          
 	      ?>
       </div>
     </div>
