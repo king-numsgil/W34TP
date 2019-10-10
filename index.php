@@ -1,11 +1,21 @@
 <?php
-session_start();
+  session_start();
 
-if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_GET["page"] . ".php")) {
-	//Renvoyer le user à la page Home en cas d'erreur ou de page manquante ou erronée
-	header("Location:index.php?page=home");
-	die();
-}
+  if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_GET["page"] . ".php")) {
+    //
+    if(isset($_GET["page"]) == "logout"){
+      session_unset();
+      session_destroy();
+    }
+    //Renvoyer le user à la page Home en cas d'erreur ou de page manquante ou erronée
+    header("Location:index.php?page=home");
+    die();
+  }
+
+  if(isset($_SESSION["login"])){
+    echo "not logged";
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,9 +61,29 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 				<li class="nav-item">
 					<a class="nav-link" href="index.php?page=home">Home</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="index.php?page=login">Login</a>
-				</li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?page=shop">Shop</a>
+        </li>
+        <?php //Option dans le Menu si le user est loggé
+          if(isset($_SESSION["login"])){
+        ?>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?page=logout">Log out</a>
+          </li>
+        <?php
+          }
+          else{ //Options dans le menu si le user n'EST PAS loggé
+        ?>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?page=login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?page=register">Register</a>
+          </li>
+        <?php
+          }
+        ?>				
 			</ul>
 		</div>
 	</div>
