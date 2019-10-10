@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_GET["page"] . ".php")) {
-	//Renvoyer le user à la page Home en cas d'erreur ou de page manquante ou erroné
+	//Renvoyer le user à la page Home en cas d'erreur ou de page manquante ou erronée
 	header("Location:index.php?page=home");
 	die();
 }
