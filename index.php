@@ -64,7 +64,8 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
             <h1>Duplicants not Included</h1>
-            <span class="subheading">Best Dupe Store Ever!</span>
+            <span class="subheading">Best Dupe Store Ever</span>
+            <span class="subheading">(I mean, look at their faces!)</span>
           </div>
         </div>
       </div>
