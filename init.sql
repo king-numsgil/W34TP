@@ -28,6 +28,10 @@ create table users
 create unique index users_email_uindex
     on users (email);
 
+insert into users(first_name, last_name, email, password) VALUES
+    ('Daniel', 'Grondin', 'daniel@dupe.co', 'salut'),
+    ('Alexis', 'Lepine', 'alexi@dupe.co', 'salut');
+
 create table duplicants
 (
     id                int auto_increment,
@@ -49,6 +53,13 @@ create table duplicants
         primary key (id)
 );
 
+insert into duplicants(name, attr_construction, attr_excavation, attr_machinery, attr_athletics, attr_science, attr_cuisine, attr_creativity, attr_strength, attr_medicine, attr_agriculture, attr_husbandry, picture) VALUES
+    ('Bobby', 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/01.png'),
+    ('Gerald', 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/02.png'),
+    ('Hannah', 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/03.png'),
+    ('Judy', 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 'pics_test/04.png'),
+    ('Troy', 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/05.png');
+
 create table traits
 (
     id          int auto_increment,
@@ -62,6 +73,14 @@ create table traits
 
 create unique index traits_title_uindex
     on traits (title);
+
+insert into traits(title, is_positive, description) VALUES
+    ('Bottomless Stomach', false, 'Decreased Callories'),
+    ('Night Owl', true, 'Gains nighttime Attribute bonuses'),
+    ('Gourmet', true, 'Increased Cuisine<br />Decreased Food Morale Bonus'),
+    ('Loud Sleeper', false, 'Snores loudly'),
+    ('Diver\'s Lung', true, 'Decreased Air Consumption Rate'),
+    ('Allergies', false, 'Allergic reaction to Floral Scent');
 
 create table duplicant_traits
 (
@@ -77,3 +96,8 @@ create table duplicant_traits
 	constraint duplicant_traits___fk2
 		foreign key (trait_id) references traits (id)
 );
+
+insert into duplicant_traits(dupe_id, trait_id) VALUES
+    (1, 1), (1, 2),
+    (2, 3), (2, 4),
+    (3, 5), (3, 6);
