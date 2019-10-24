@@ -9,7 +9,8 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 	//Renvoyer le user à la page Home en cas d'erreur ou de page manquante ou erronée
 	header("Location:index.php?page=home");
 	die();
-} ?>
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,8 +57,7 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 					<a class="nav-link" href="index.php?page=shop">Shop</a>
 				</li>
 
-				<?php //Option dans le Menu si le user est loggé
-				if (isset($_SESSION["login"])) { ?>
+				<?php if (isset($_SESSION["login"])) { //Option dans le Menu si le user est loggé ?>
 
 				<li class="nav-item">
 					<a class="nav-link" href="index.php?page=logout">Log out</a>
