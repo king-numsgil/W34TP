@@ -100,7 +100,7 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 <!-- Main Content -->
 <div class="container">
 	<div class="row">
-		<div class="col-lg-8 col-md-10 mx-auto">
+		<div class="col-lg-11 col-md-12 mx-auto">
 			<?php
 			include_once "pagez/" . $_GET["page"] . ".php";
 			?>
