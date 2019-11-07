@@ -1,5 +1,6 @@
 <?php
 session_start();
+$db = new mysqli('localhost', 'dupe_store', 'ewHE4eNuPikdxIxP', 'dupe_store');
 
 if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_GET["page"] . ".php")) {
 	if (isset($_GET["page"]) == "logout") {
@@ -57,13 +58,17 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 					<a class="nav-link" href="index.php?page=shop">Shop</a>
 				</li>
 
-				<?php if (isset($_SESSION["login"])) { //Option dans le Menu si le user est loggé ?>
+				<?php if (isset($_SESSION["login"])) { //Option dans le Menu si le user est loggé
+					$user = $db->query("SELECT * FROM users where email = '{$_SESSION["login"]}'");
+					$data = $user->fetch_assoc();
+					$name = $data["first_name"] . " " . $data["last_name"];
+					?>
 
 					<li class="nav-item">
 						<a class="nav-link" href="index.php?page=logout">Log out</a>
 					</li>
 					<li class="nav-item">
-						<a class="font-weight-light nav-link disabled">Logged as <?= $_SESSION["login"] ?></a>
+						<a class="font-weight-light nav-link disabled">Logged as <?= $name ?></a>
 					</li>
 
 				<?php } else { //Options dans le menu si le user n'EST PAS loggé ?>
@@ -101,10 +106,7 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 <div class="container">
 	<div class="row">
 		<div class="col-lg-11 col-md-12 mx-auto">
-			<?php
-			$db = new mysqli('localhost', 'dupe_store', 'ewHE4eNuPikdxIxP', 'dupe_store');
-			include_once "pagez/" . $_GET["page"] . ".php";
-			?>
+			<?php include_once "pagez/" . $_GET["page"] . ".php"; ?>
 		</div>
 	</div>
 </div>
