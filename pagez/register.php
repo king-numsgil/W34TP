@@ -30,8 +30,7 @@ if (isset($_GET["action"]) && empty($_GET["action"])) {
 		error("Both passwords must be the same");
 		$error = true;
 	}
-
-	$db = new mysqli('localhost', 'dupe_store', 'ewHE4eNuPikdxIxP', 'dupe_store');
+	
 	$user = $db->query("SELECT * FROM users WHERE email = '{$_POST["email"]}'");
 	if ($user->num_rows > 0) {
 		error("This email is already in use");

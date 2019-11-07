@@ -102,6 +102,7 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 	<div class="row">
 		<div class="col-lg-11 col-md-12 mx-auto">
 			<?php
+			$db = new mysqli('localhost', 'dupe_store', 'ewHE4eNuPikdxIxP', 'dupe_store');
 			include_once "pagez/" . $_GET["page"] . ".php";
 			?>
 		</div>

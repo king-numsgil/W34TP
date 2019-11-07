@@ -1,12 +1,19 @@
 <?php
 if (isset($_GET["action"]) && empty($_GET["action"])) {
 	if (isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["password"]) && !empty($_POST["password"])) {
-		if ($_POST["email"] == "urmomma@hotmail.cum" && $_POST["password"] == "ok") {
-			$_SESSION["login"] = $_POST["email"];
-			header("Location:index.php?page=home");
-			die();
+		$user = $db->query("SELECT * FROM users WHERE email = '{$_POST["email"]}'");
+
+		if ($user->num_rows == 0) {
+			echo "<script>alert('Incorrect email'); window.location = 'index.php?page=login';</script>";
 		} else {
-			echo "<script>alert('Incorrect email or password'); window.location = 'index.php?page=login';</script>";
+			$data = $user->fetch_assoc();
+			if ($data["password"] === $_POST["password"]) {
+				$_SESSION["login"] = $_POST["email"];
+				header("Location:index.php?page=home");
+				die();
+			} else {
+				echo "<script>alert('Incorrect password'); window.location = 'index.php?page=login';</script>";
+			}
 		}
 	} else {
 		echo "<script>alert('Please enter all your informations'); window.location = 'index.php?page=login';</script>";

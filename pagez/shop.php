@@ -1,5 +1,4 @@
 <?php
-$db = new mysqli('localhost', 'dupe_store', 'ewHE4eNuPikdxIxP', 'dupe_store');
 $result = $db->query("SELECT * FROM duplicants");
 ?>
 <div class="row">
