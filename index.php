@@ -59,21 +59,21 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 
 				<?php if (isset($_SESSION["login"])) { //Option dans le Menu si le user est loggé ?>
 
-				<li class="nav-item">
-					<a class="nav-link" href="index.php?page=logout">Log out</a>
-				</li>
-				<li class="nav-item">
-					<a class="font-weight-light nav-link disabled">Logged as <?= $_SESSION["login"] ?></a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="index.php?page=logout">Log out</a>
+					</li>
+					<li class="nav-item">
+						<a class="font-weight-light nav-link disabled">Logged as <?= $_SESSION["login"] ?></a>
+					</li>
 
 				<?php } else { //Options dans le menu si le user n'EST PAS loggé ?>
 
-				<li class="nav-item">
-					<a class="nav-link" href="index.php?page=login">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="index.php?page=register">Register</a>
-				</li>
+					<li class="nav-item">
+						<a class="nav-link" href="index.php?page=login">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="index.php?page=register">Register</a>
+					</li>
 
 				<?php } ?>
 			</ul>
