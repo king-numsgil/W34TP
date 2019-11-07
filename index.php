@@ -57,6 +57,9 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 				<li class="nav-item">
 					<a class="nav-link" href="index.php?page=shop">Shop</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="index.php?page=cart">Cart</a>
+				</li>
 
 				<?php if (isset($_SESSION["login"])) { //Option dans le Menu si le user est loggé
 					$user = $db->query("SELECT * FROM users where email = '{$_SESSION["login"]}'");

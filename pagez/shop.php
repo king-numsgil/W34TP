@@ -19,7 +19,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 					<div class="card-footer clearfix">
 						Interested?
 						<div class="btn-group float-md-right" role="group" aria-label="Basic example">
-							<a class="btn btn-sm btn-success" href="index.php?page=details&id=<?= $row["id"] ?>">
+							<a class="btn btn-sm btn-success" href="index.php?page=cart&action=add&id=<?= $row["id"] ?>">
 								Add to Cart
 							</a>
 							<a class="btn btn-sm btn-primary" href="index.php?page=details&id=<?= $row["id"] ?>">
