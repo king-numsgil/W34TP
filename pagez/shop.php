@@ -8,9 +8,7 @@
 <div class="container">
 	<div class="row">
 <?php
-
-	while($row = $result->fetch_assoc()){
-
+	while ($row = $result->fetch_assoc()) {
 ?>
 <!--<div class="container">
 	<div class="row">
@@ -29,7 +27,7 @@
 
 		<div class="col-lg-4 col-md-10 mt-auto">
 			<div class="jumbotron">
-				<h1 class="display-8">Dupe #0</h1>
+				<h1 class="display-8">Dupe #<?=$row["id"]?></h1>
 				<p class="lead">Say hello to <?=$row["name"]?></p>
 				<img src="<?=$row['picture']?>">
 				<hr class="my-4">
