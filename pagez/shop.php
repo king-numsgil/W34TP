@@ -18,9 +18,14 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 					</div>
 					<div class="card-footer clearfix">
 						Interested?
-						<a class="btn-sm btn-primary float-md-right" href="index.php?page=details&id=<?= $row["id"] ?>">
-							Details
-						</a>
+						<div class="btn-group float-md-right" role="group" aria-label="Basic example">
+							<a class="btn btn-sm btn-success" href="index.php?page=details&id=<?= $row["id"] ?>">
+								Add to Cart
+							</a>
+							<a class="btn btn-sm btn-primary" href="index.php?page=details&id=<?= $row["id"] ?>">
+								Details
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -29,20 +34,20 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 	<div class="row">
 		<div class="col text-left">
 			<?php if ($offset > 0) { ?>
-				<a class="btn btn-outline-info" href="index.php?page=shop&offset=<?= min($offset - $limit, 0) ?>&limit=<?= $limit ?>">
+				<a class="btn btn-outline-danger" href="index.php?page=shop&offset=<?= min($offset - $limit, 0) ?>&limit=<?= $limit ?>">
 					Previous <?= $limit ?>
 				</a>
 			<?php } else { ?>
-				<a class="btn btn-outline-info disabled" href="#">Previous <?= $limit ?></a>
+				<a class="btn btn-outline-danger disabled" href="#">Previous <?= $limit ?></a>
 			<?php } ?>
 		</div>
 		<div class="col text-right">
 			<?php if ($offset < $count - $limit) { ?>
-				<a class="btn btn-outline-info" href="index.php?page=shop&offset=<?= max($offset + $limit, $count - $limit) ?>&limit=<?= $limit ?>">
+				<a class="btn btn-outline-danger" href="index.php?page=shop&offset=<?= max($offset + $limit, $count - $limit) ?>&limit=<?= $limit ?>">
 					Next <?= $limit ?>
 				</a>
 			<?php } else { ?>
-				<a class="btn btn-outline-info disabled" href="#">Next <?= $limit ?></a>
+				<a class="btn btn-outline-danger disabled" href="#">Next <?= $limit ?></a>
 			<?php } ?>
 		</div>
 	</div>
