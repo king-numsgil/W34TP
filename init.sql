@@ -56,7 +56,8 @@ insert into duplicants(name, attr_construction, attr_excavation, attr_machinery,
     ('Gerald', 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/02.png', 14),
     ('Hannah', 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/03.png', 19),
     ('Judy', 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 'pics_test/04.png', 47),
-    ('Troy', 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/05.png', 2);
+    ('Troy', 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/05.png', 2),
+    ('Yeep', 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 'pics_test/06.png', 25);
 
 create table traits
 (

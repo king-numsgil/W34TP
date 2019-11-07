@@ -11,7 +11,8 @@ $result = $db->query("SELECT * FROM duplicants");
 					<p class="card-text" style="margin-top: 0">Say hello to <?= $row["name"] ?></p>
 				</div>
 				<div class="card-footer clearfix">
-					Interested? <a class="btn-sm btn-primary float-md-right" href="index.php?page=details&id=<?= $row["id"] ?>">
+					Interested? 
+					<a class="btn-sm btn-primary float-md-right" href="index.php?page=details&id=<?= $row["id"] ?>">
 						Details
 					</a>
 				</div>
