@@ -45,7 +45,7 @@ create table duplicants
     attr_agriculture  int default 0 null,
     attr_husbandry    int default 0 null,
     picture           varchar(32)   not null,
-	price             float       0 not null,
+	price             float         not null,
 
     constraint duplicants_pk
         primary key (id)
