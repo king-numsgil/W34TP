@@ -45,17 +45,18 @@ create table duplicants
     attr_agriculture  int default 0 null,
     attr_husbandry    int default 0 null,
     picture           varchar(32)   not null,
+	price             float       0 not null,
 
     constraint duplicants_pk
         primary key (id)
 );
 
 insert into duplicants(name, attr_construction, attr_excavation, attr_machinery, attr_athletics, attr_science, attr_cuisine, attr_creativity, attr_strength, attr_medicine, attr_agriculture, attr_husbandry, picture) VALUES
-    ('Bobby', 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/01.png'),
-    ('Gerald', 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/02.png'),
-    ('Hannah', 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/03.png'),
-    ('Judy', 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 'pics_test/04.png'),
-    ('Troy', 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/05.png');
+    ('Bobby', 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/01.png', 10),
+    ('Gerald', 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/02.png', 14),
+    ('Hannah', 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/03.png', 19),
+    ('Judy', 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 'pics_test/04.png', 47),
+    ('Troy', 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/05.png', 2);
 
 create table traits
 (
