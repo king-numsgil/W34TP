@@ -16,14 +16,14 @@ if (isset($_GET["action"]) && empty($_GET["action"])) {
 	<form method="post" action="index.php?page=login&action" novalidate>
 		<div class="control-group">
 			<div class="form-group floating-label-form-group controls">
-				<label>Email Address</label>
-				<input type="email" class="form-control" placeholder="Email Address" name="email" required/>
+				<label for="txtLoginEmail">Email Address</label>
+				<input id="txtLoginEmail" type="email" class="form-control" placeholder="Email Address" name="email" required/>
 			</div>
 		</div>
 		<div class="control-group">
 			<div class="form-group floating-label-form-group controls">
-				<label>Password</label>
-				<input type="password" class="form-control" placeholder="Password" name="password" required/>
+				<label for="txtLoginPassword">Password</label>
+				<input id="txtLoginPassword" type="password" class="form-control" placeholder="Password" name="password" required/>
 			</div>
 		</div>
 		<br>
