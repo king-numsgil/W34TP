@@ -144,7 +144,7 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 						</a>
 					</li>
 				</ul>
-				<p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
+				<p class="copyright text-muted">Copyright &copy; Dupe Store 2019</p>
 			</div>
 		</div>
 	</div>
