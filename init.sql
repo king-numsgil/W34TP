@@ -51,7 +51,7 @@ create table duplicants
         primary key (id)
 );
 
-insert into duplicants(name, attr_construction, attr_excavation, attr_machinery, attr_athletics, attr_science, attr_cuisine, attr_creativity, attr_strength, attr_medicine, attr_agriculture, attr_husbandry, picture) VALUES
+insert into duplicants(name, attr_construction, attr_excavation, attr_machinery, attr_athletics, attr_science, attr_cuisine, attr_creativity, attr_strength, attr_medicine, attr_agriculture, attr_husbandry, picture, price) VALUES
     ('Bobby', 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/01.png', 10),
     ('Gerald', 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/02.png', 14),
     ('Hannah', 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/03.png', 19),
