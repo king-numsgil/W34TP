@@ -26,8 +26,8 @@ create unique index users_email_uindex
     on users (email);
 
 insert into users(first_name, last_name, email, password) VALUES
-    ('Daniel', 'Grondin', 'daniel@dupe.co', 'salut'),
-    ('Alexis', 'Lepine', 'alexi@dupe.co', 'salut');
+    ('Daniel', 'Grondin', 'king@numsgil.co', 'salut'),
+    ('Alexis', 'Lepine', 'exerapidoxthorn@gmail.com', 'P@ssw0rd');
 
 create table duplicants
 (

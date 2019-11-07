@@ -1,5 +1,5 @@
 <?php
-$result = $db->query("SELECT * FROM duplicants");
+	$result = $db->query("SELECT * FROM duplicants");
 ?>
 <div class="row">
 	<?php while ($row = $result->fetch_assoc()) { ?>
@@ -11,7 +11,7 @@ $result = $db->query("SELECT * FROM duplicants");
 					<p class="card-text" style="margin-top: 0">Say hello to <?= $row["name"] ?></p>
 				</div>
 				<div class="card-footer clearfix">
-					Interested? 
+					Interested?
 					<a class="btn-sm btn-primary float-md-right" href="index.php?page=details&id=<?= $row["id"] ?>">
 						Details
 					</a>
