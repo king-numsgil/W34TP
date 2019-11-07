@@ -384,6 +384,12 @@ footer .copyright {
   text-align: center;
 }
 
+/*Added by Master Pigeon for Style purposes*/
+.row .stats {
+  font-family:'Courier New','Courier', monospace;
+  margin-left:20px;
+}
+
 /*.btn {
   font-size: 14px;
   font-weight: 800;

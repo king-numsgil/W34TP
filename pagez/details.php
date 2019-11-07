@@ -1,47 +1,82 @@
 <?php
 	$result = $db->query("SELECT * FROM duplicants WHERE id = ". $_GET["id"]);
+
+	$row = $result->fetch_assoc();
+
+	$t_result = $db->query("
+		SELECT traits.* FROM duplicants 
+		INNER JOIN duplicant_traits
+		ON duplicants.id = duplicant_traits.dupe_id
+		INNER JOIN traits
+		ON duplicant_traits.trait_id = traits.id
+		WHERE duplicants.id = " . $_GET["id"]
+	);
 ?>
-<!--<div class="row">
-	<?php #while ($row = $result->fetch_assoc()) { ?>
-		<div class="col-lg-12 col-md-16 mt-auto">
-			<div class="">
-				
-			</div>
-		</div>-->
-		<div class="container">
-		  <div class="row">
-		    <div class="col-sm-9">
-		      Level 1: .col-sm-9
-		      <div class="row">
-		        <div class="col-8 col-sm-6">
-		          Level 2: .col-8 .col-sm-6
-		        </div>
-		        <div class="col-4 col-sm-6">
-		          Level 2: .col-4 .col-sm-6
-		        </div>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-
-
-
-
-
-		<!--<div class="col-lg-4 col-md-10 mt-auto" style="margin-bottom: 1rem">
-			<div class="card">
-				<div class="card-header">Dupe #<?= $row["id"] ?></div>
-				<img class="card-img-top" src="<?= $row['picture'] ?>" alt="Dupe"/>
-				<div class="card-body">
-					<p class="card-text" style="margin-top: 0">Say hello to <?= $row["name"] ?></p>
+<div class="row">
+	<div class="col card-header">
+		<h2 align="center"><?=$row["name"]?></h2>
+	  	<div class="row">
+	    	<div class="col-lg-6">
+				<img class="card-img-top" src="<?= $row["picture"] ?>" alt="Dupe"/>
+				<div class="card-header" style="background-color: lightgrey">
+					<div class="row stats">
+						Agriculture : <?=$row["attr_agriculture"]?>
+					</div>
+					<div class="row stats">
+						Athletics : <?=$row["attr_athletics"]?>
+					</div>
+					<div class="row stats">
+						Construction : <?=$row["attr_construction"]?>
+					</div>
+					<div class="row stats">
+						Creativity : <?=$row["attr_creativity"]?>
+					</div>
+					<div class="row stats">
+						Cuisine : <?=$row["attr_cuisine"]?>
+					</div>
+					<div class="row stats">
+						Excavation : <?=$row["attr_excavation"]?>
+					</div>
+					<div class="row stats">
+						Husbandry : <?=$row["attr_husbandry"]?>
+					</div>
+					<div class="row stats">
+						Machinery : <?=$row["attr_machinery"]?>
+					</div>
+					<div class="row stats">
+						Medicine : <?=$row["attr_medicine"]?>
+					</div>
+					<div class="row stats">
+						Science : <?=$row["attr_science"]?>
+					</div>
+					<div class="row stats">
+						Strength : <?=$row["attr_strength"]?>
+					</div>
 				</div>
-				<div class="card-footer clearfix">
-					Interested?
-					<a class="btn-sm btn-primary float-md-right" href="index.php?page=details&id=<?= $row["id"] ?>">
-						Details
-					</a>
-				</div>
-			</div>
-		</div>-->
-	<?php } ?>
+	    	</div>
+	    	<div class="col-lg-6">
+	    		<div class="">
+	    			<table>
+		    			<?php while ($traits_row = $t_result->fetch_assoc()) {?>
+			    			<tr>		    					
+			    				<td>
+			    					<?php if($traits_row["is_positive"] == true){?>
+			    						<h5 style="color:green"><?= $traits_row["title"]?></h5>
+			    					<?php } else{?>
+			    						<h5 style="color:red"><?= $traits_row["title"]?></h5>
+			    					<?php } ?>
+			    				</td>
+			    			</tr>
+			    			<tr>
+			    				<td>
+			    					<?= $traits_row["description"]?>
+			    				</td>
+			    			</tr>
+		    			<?php } ?>
+
+	    			</table>
+	    		</div>
+	    	</div>    	
+	  	</div>
+	</div>
 </div>
