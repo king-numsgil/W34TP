@@ -63,17 +63,26 @@ if (isset($_GET["action"])) {
 							<p class="card-text">Say hello to <?= $row["name"] ?></p>
 						</div>
 						<div class="card-footer text-center" style="padding: 0">
-							<div class="btn-group" style="width: 100%" role="group" aria-label="Cart Actions">
-								<a class="btn btn-sm btn-success" style="max-width: 2rem; border-top-left-radius: 0" href="#">+</a>
-								<a class="btn btn-sm btn-outline-dark disabled" href="#"><?= $qty ?></a>
-								<a class="btn btn-sm btn-success" style="max-width: 2rem" href="#">-</a>
-								<a class="btn btn-sm btn-primary" href="index.php?page=details&id=<?= $id ?>">
-									Details
-								</a>
-								<a class="btn btn-sm btn-danger" style="border-top-right-radius: 0" href="index.php?page=cart&action=remove&id=<?= $id ?>">
-									Remove
-								</a>
+							<div class="btn-toolbar justify-content-between" style="width: 100%">
+								<div class="input-group input-group-sm mr-2">
+									<div class="input-group-prepend">
+										<a class="btn btn-success" style="max-width: 2rem; border-top-left-radius: 0" href="#">+</a>
+									</div>
+									<input type="number" class="form-control form-control-sm" style="max-width: 7.5rem" disabled value="<?= $qty ?>" />
+									<div class="input-group-append">
+										<a class="btn btn-success" style="max-width: 2rem" href="#">-</a>
+									</div>
+								</div>
+								<div class="btn-group" role="group" aria-label="Cart Actions">
+									<a class="btn btn-sm btn-primary" href="index.php?page=details&id=<?= $id ?>">
+										Details
+									</a>
+									<a class="btn btn-sm btn-danger" style="border-top-right-radius: 0" href="index.php?page=cart&action=remove&id=<?= $id ?>">
+										Remove
+									</a>
+								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
