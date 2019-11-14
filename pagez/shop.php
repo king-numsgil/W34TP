@@ -1,6 +1,6 @@
 <?php
 if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
-	header("Location: index.php?page=shop&offset=0&limit=3");
+	header("Location: index.php?page=shop&offset=0&limit=6");
 	die();
 } else {
 	$offset = $_GET["offset"]; $limit = $_GET["limit"];

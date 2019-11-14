@@ -97,7 +97,10 @@ insert into traits(title, is_positive, description) VALUES
     ('Squeamish', false, 'Cannot do <b>Doctoring Errands</b>'),
     ('Anemic', false, 'Decreased <b>Athletics</b>'), /*20*/
     ('Buff', true, 'Increased <b>Strength</b>'),
-    ('Interior Decorator', true, 'Increased <b>Creativity</b><br/>Decreased <b>Decor Morale Bonus</b>');
+    ('Interior Decorator', true, 'Increased <b>Creativity</b><br/>Decreased <b>Decor Morale Bonus</b>'),
+    ('Uncultured', true, 'Increased <b>Decor Morale Bonus</b><br/>Cannot do <b>Decorating Errands</b>'),
+    ('Mouth Breather', false, 'Increased <b>Air Consumption Rate</b>'),
+    ('Irritable Bowel', false, 'Decreased <b>Bathroom Use Speed</b>');
 
 create table duplicant_traits
 (
