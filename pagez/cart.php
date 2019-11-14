@@ -64,7 +64,7 @@ if (isset($_GET["action"])) {
 						</div>
 						<div class="card-footer text-center" style="padding: 0">
 							<div class="btn-toolbar justify-content-between" style="width: 100%">
-								<div class="input-group input-group-sm mr-2">
+								<div class="input-group input-group-sm">
 									<div class="input-group-prepend">
 										<button id="add<?= $id ?>" class="btn btn-success"
 										        style="max-width: 2rem; border-top-left-radius: 0"
