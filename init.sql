@@ -79,22 +79,22 @@ insert into traits(title, is_positive, description) VALUES
     ('Night Owl', true, 'Gains nighttime Attribute bonuses'),
     ('Gourmet', true, 'Increased Cuisine<br />Decreased Food Morale Bonus'),
     ('Loud Sleeper', false, 'Snores loudly'),
-    ('Diver\'s Lung', true, 'Decreased Air Consumption Rate'),
+    ('Diver\'s Lung', true, 'Decreased Air Consumption Rate'),/*5*/
     ('Allergies', false, 'Allergic reaction to Floral Scent'),
     ('Early Bird', true, 'Gains morning Attribute bonuses'),
     ('Flatulent', false, 'Farts frequently'),
     ('Yokel', false, 'Cannot do <b>Researching Errands</b>'),
-    ('Biohazardous', false, 'Decreased <b>Germ Resistance</b>'),
+    ('Biohazardous', false, 'Decreased <b>Germ Resistance</b>'),/*10*/
     ('Quick Learner', true, 'Increased <b>Science</b>'),
     ('Caregiver', true, 'Increased <b>Medicine</b>'),
     ('Grease Monkey', true, 'Increased <b>Machinery</b>'),
     ('Narcoleptic', false, 'Falls asleep periodically'),
-    ('Iron Gut', true, 'Immune to <b>Food Poisoning</b>'),
+    ('Iron Gut', true, 'Immune to <b>Food Poisoning</b>'),/*15*/
     ('Gastrophobia', false, 'Cannot do <b>Cooking Errands</b>'),
     ('Mole Hands', true, 'Increased <b>Excavation</b>'),
     ('Small Bladder', false, 'Increased <b>Bladder</b>'),
     ('Squeamish', false, 'Cannot do <b>Doctoring Errands</b>'),
-    ('Anemic', false, 'Decreased <b>Athletics</b>'),
+    ('Anemic', false, 'Decreased <b>Athletics</b>'), /*20*/
     ('Buff', true, 'Increased <b>Strength</b>');
 
 create table duplicant_traits
@@ -115,4 +115,6 @@ create table duplicant_traits
 insert into duplicant_traits(dupe_id, trait_id) VALUES
     (1, 1), (1, 2),
     (2, 3), (2, 4),
-    (3, 5), (3, 6);
+    (3, 5), (3, 6),
+    (4, 19), (4, 15),
+    (5, 14), (5, 11);
