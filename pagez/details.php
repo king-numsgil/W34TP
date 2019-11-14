@@ -37,18 +37,22 @@ $t_result = $db->query("
 							<?php } ?>
 						</table>
 					</div>
-					<div class="col-lg-4 stat-block">
-						<div class="row stats">Agriculture : <?= $row["attr_agriculture"] ?></div>
-						<div class="row stats">Athletics : <?= $row["attr_athletics"] ?></div>
-						<div class="row stats">Construction : <?= $row["attr_construction"] ?></div>
-						<div class="row stats">Creativity : <?= $row["attr_creativity"] ?></div>
-						<div class="row stats">Cuisine : <?= $row["attr_cuisine"] ?></div>
-						<div class="row stats">Excavation : <?= $row["attr_excavation"] ?></div>
-						<div class="row stats">Husbandry : <?= $row["attr_husbandry"] ?></div>
-						<div class="row stats">Machinery : <?= $row["attr_machinery"] ?></div>
-						<div class="row stats">Medicine : <?= $row["attr_medicine"] ?></div>
-						<div class="row stats">Science : <?= $row["attr_science"] ?></div>
-						<div class="row stats">Strength : <?= $row["attr_strength"] ?></div>
+					<div class="col-lg-4" style="padding-right: 0">
+						<table class="table table-sm table-borderless table-striped table-hover text-monospace stat-block">
+							<tbody>
+								<tr><td>Agriculture</td><td><?= $row["attr_agriculture"] ?></td></tr>
+								<tr><td>Athletics</td><td><?= $row["attr_athletics"] ?></td></tr>
+								<tr><td>Construction</td><td><?= $row["attr_construction"] ?></td></tr>
+								<tr><td>Creativity</td><td><?= $row["attr_creativity"] ?></td></tr>
+								<tr><td>Cuisine</td><td><?= $row["attr_cuisine"] ?></td></tr>
+								<tr><td>Excavation</td><td><?= $row["attr_excavation"] ?></td></tr>
+								<tr><td>Husbandry</td><td><?= $row["attr_husbandry"] ?></td></tr>
+								<tr><td>Machinery</td><td><?= $row["attr_machinery"] ?></td></tr>
+								<tr><td>Medicine</td><td><?= $row["attr_medicine"] ?></td></tr>
+								<tr><td>Science</td><td><?= $row["attr_science"] ?></td></tr>
+								<tr><td>Strength</td><td><?= $row["attr_strength"] ?></td></tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>

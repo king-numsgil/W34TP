@@ -385,16 +385,16 @@ footer .copyright {
 }
 
 /*Added by Master Pigeon for Style purposes*/
-.row .stats {
-  font-family:'Courier New','Courier', monospace;
-  margin-left:0px;
+table.stat-block {
+  margin-bottom: 0;
 }
 
-div.stat-block {
-  background-color: #9eb8c8;
-  border-radius: 0 0 20px 0;
-  padding-left: 10px;
-  padding-top: 15px;
+table.stat-block > tbody > tr > td {
+  padding: .15rem;
+}
+
+table.stat-block > tbody > tr > td:last-child {
+  text-align: right;
 }
 
 div.card > div.card-body > p.card-text:first-child {
