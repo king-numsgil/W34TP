@@ -4,7 +4,6 @@ if (!isset($_SESSION["login"]) || empty($_SESSION["login"])) {
 	die();
 }
 
-$user = $db->query("SELECT * FROM users where email = '{$_SESSION["login"]}'")->fetch_assoc();
 if (!$user["is_admin"]) {
 	header("Location: index.php?page=home");
 	die();

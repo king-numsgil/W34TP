@@ -62,11 +62,10 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 				</li>
 
 				<?php if (isset($_SESSION["login"])) { //Option dans le Menu si le user est loggé
-					$user = $db->query("SELECT * FROM users where email = '{$_SESSION["login"]}'");
-					$data = $user->fetch_assoc();
-					$name = $data["first_name"] . " " . $data["last_name"];
+					$user = $db->query("SELECT * FROM users where email = '{$_SESSION["login"]}'")->fetch_assoc();
+					$name = $user["first_name"] . " " . $user["last_name"];
 
-					if ($data["is_admin"]) {
+					if ($user["is_admin"]) {
 					?>
 						<li class="nav-item">
 							<a class="nav-link" href="index.php?page=admin">Admin</a>
