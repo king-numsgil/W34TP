@@ -59,7 +59,7 @@ insert into duplicants(name, attr_construction, attr_excavation, attr_machinery,
     ('Troy', 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/05.png', 2),
     ('Yeep', 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 'pics_test/06.png', 25),
     ('Leia',0,7,0,0,0,0,7,0,0,0,0,'pics_test/07.png',68),
-    ('Daniel',0,0,0,0,-5,7,0,0,0,0,0,'pics_test/08.png', 30);
+    ('Daniel',0,0,0,-5,7,0,0,0,0,0,0,'pics_test/08.png', 30);
 
 create table traits
 (
