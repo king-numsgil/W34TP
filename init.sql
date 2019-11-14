@@ -90,7 +90,12 @@ insert into traits(title, is_positive, description) VALUES
     ('Grease Monkey', true, 'Increased <b>Machinery</b>'),
     ('Narcoleptic', false, 'Falls asleep periodically'),
     ('Iron Gut', true, 'Immune to <b>Food Poisoning</b>'),
-    ('Gastrophobia', false, 'Cannot do <b>Cooking Errands</b>');
+    ('Gastrophobia', false, 'Cannot do <b>Cooking Errands</b>'),
+    ('Mole Hands', true, 'Increased <b>Excavation</b>'),
+    ('Small Bladder', false, 'Increased <b>Bladder</b>'),
+    ('Squeamish', false, 'Cannot do <b>Doctoring Errands</b>'),
+    ('Anemic', false, 'Decreased <b>Athletics</b>'),
+    ('Buff', true, 'Increased <b>Strength</b>');
 
 create table duplicant_traits
 (
