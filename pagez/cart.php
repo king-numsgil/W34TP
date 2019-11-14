@@ -1,5 +1,6 @@
 <?php
 $user = null;
+
 setlocale(LC_MONETARY, 'en_CA');
 function money_format($format, $number)
 {
@@ -13,11 +14,9 @@ function money_format($format, $number)
 	foreach ($matches as $fmatch) {
 		$value = floatval($number);
 		$flags = array(
-			'fillchar' => preg_match('/\=(.)/', $fmatch[1], $match) ?
-				$match[1] : ' ',
+			'fillchar' => preg_match('/\=(.)/', $fmatch[1], $match) ? $match[1] : ' ',
 			'nogroup' => preg_match('/\^/', $fmatch[1]) > 0,
-			'usesignal' => preg_match('/\+|\(/', $fmatch[1], $match) ?
-				$match[0] : '+',
+			'usesignal' => preg_match('/\+|\(/', $fmatch[1], $match) ? $match[0] : '+',
 			'nosimbol' => preg_match('/\!/', $fmatch[1]) > 0,
 			'isleft' => preg_match('/\-/', $fmatch[1]) > 0
 		);
@@ -57,15 +56,13 @@ function money_format($format, $number)
 		}
 		if (!$flags['nosimbol']) {
 			$currency = $cprefix .
-				($conversion == 'i' ? $locale['int_curr_symbol'] : $locale['currency_symbol']) .
-				$csuffix;
+				($conversion == 'i' ? $locale['int_curr_symbol'] : $locale['currency_symbol']) . $csuffix;
 		} else {
 			$currency = '';
 		}
 		$space = $locale["{$letter}_sep_by_space"] ? ' ' : '';
 
-		$value = number_format($value, $right, $locale['mon_decimal_point'],
-			$flags['nogroup'] ? '' : $locale['mon_thousands_sep']);
+		$value = number_format($value, $right, $locale['mon_decimal_point'], $flags['nogroup'] ? '' : $locale['mon_thousands_sep']);
 		$value = @explode($locale['mon_decimal_point'], $value);
 
 		$n = strlen($prefix) + strlen($currency) + strlen($value[0]);
@@ -79,8 +76,7 @@ function money_format($format, $number)
 			$value = $prefix . $value . $space . $currency . $suffix;
 		}
 		if ($width > 0) {
-			$value = str_pad($value, $width, $flags['fillchar'], $flags['isleft'] ?
-				STR_PAD_RIGHT : STR_PAD_LEFT);
+			$value = str_pad($value, $width, $flags['fillchar'], $flags['isleft'] ? STR_PAD_RIGHT : STR_PAD_LEFT);
 		}
 
 		$format = str_replace($fmatch[0], $value, $format);
