@@ -7,9 +7,9 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 	$count = $db->query("SELECT COUNT(id) FROM duplicants")->fetch_assoc()["COUNT(id)"];
 	$result = $db->query("SELECT * FROM duplicants LIMIT $limit OFFSET $offset");
 ?>
-	<div class="row">
+	<div class="row align-items-start">
 		<?php while ($row = $result->fetch_assoc()) { ?>
-			<div class="col-lg-4 col-md-10 mt-auto" style="margin-bottom: 1rem">
+			<div class="col-lg-4 col-md-10" style="margin-bottom: 1rem">
 				<div class="card">
 					<div class="card-header">Dupe #<?= $row["id"] ?></div>
 					<img class="card-img-top" src="<?= $row['picture'] ?>" alt="Dupe"/>
@@ -43,7 +43,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 							<small><?= $row["price"] ?>$ Each</small>
 						</li>
 					</ul>
-					<div class="card-footer" style="padding: 0">
+					<div class="card-footer" style="padding: 0; border: 0">
 						<div class="btn-group" style="width: 100%" role="group" aria-label="Dupe Footer">
 							<a class="btn btn-sm btn-light disabled" style="border-top-left-radius: 0" href="#">Interested?</a>
 							<a class="btn btn-sm btn-success" href="index.php?page=cart&action=add&id=<?= $row["id"] ?>">
