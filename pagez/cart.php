@@ -117,7 +117,14 @@ if (isset($_GET["action"])) {
 		die();
 	}
 	if ($action === "update") {
-		print_r($_POST);
+		foreach ($_POST as $name => $qty) {
+			if (substr($name, 0, 3) === "qty") {
+				$id = intval(substr($name, 3));
+				$_SESSION["cart"][$id] = $qty;
+			}
+		}
+		header("Location: index.php?page=cart");
+		die();
 	}
 } else {
 	if (count($_SESSION["cart"]) === 0) { ?>
