@@ -28,10 +28,7 @@ if (isset($_GET["action"])) {
 	}
 	if ($action === "remove" && isset($_GET["id"])) {
 		if (isset($_SESSION["cart"][$_GET["id"]])) {
-			$_SESSION["cart"][$_GET["id"]]--;
-			if ($_SESSION["cart"][$_GET["id"]] <= 0) {
-				unset($_SESSION["cart"][$_GET["id"]]);
-			}
+			unset($_SESSION["cart"][$_GET["id"]]);
 		}
 		header("Location: index.php?page=cart");
 		die();
