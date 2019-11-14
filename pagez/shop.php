@@ -34,7 +34,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 	<div class="row">
 		<div class="col text-left">
 			<?php if ($offset > 0) { ?>
-				<a class="btn btn-outline-danger" href="index.php?page=shop&offset=<?= min($offset - $limit, 0) ?>&limit=<?= $limit ?>">
+				<a class="btn btn-outline-danger" href="index.php?page=shop&offset=<?= max($offset - $limit, 0) ?>&limit=<?= $limit ?>">
 					Previous <?= $limit ?>
 				</a>
 			<?php } else { ?>
@@ -43,7 +43,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 		</div>
 		<div class="col text-right">
 			<?php if ($offset < $count - $limit) { ?>
-				<a class="btn btn-outline-danger" href="index.php?page=shop&offset=<?= max($offset + $limit, $count - $limit) ?>&limit=<?= $limit ?>">
+				<a class="btn btn-outline-danger" href="index.php?page=shop&offset=<?= min($offset + $limit, $count - $limit) ?>&limit=<?= $limit ?>">
 					Next <?= $limit ?>
 				</a>
 			<?php } else { ?>
