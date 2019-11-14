@@ -66,11 +66,17 @@ if (isset($_GET["action"])) {
 							<div class="btn-toolbar justify-content-between" style="width: 100%">
 								<div class="input-group input-group-sm mr-2">
 									<div class="input-group-prepend">
-										<a class="btn btn-success" style="max-width: 2rem; border-top-left-radius: 0" href="#">+</a>
+										<button id="add<?= $id ?>" class="btn btn-success"
+										        style="max-width: 2rem; border-top-left-radius: 0"
+										        onclick="add(<?= $id ?>)">+</button>
 									</div>
-									<input type="number" class="form-control form-control-sm" style="max-width: 7.5rem" disabled value="<?= $qty ?>" />
+									<input id="qty<?= $id ?>" type="number" class="form-control form-control-sm"
+									       style="max-width: 7.5rem" readonly
+									       value="<?= $qty ?>" name="qty<?= $id ?>"/>
 									<div class="input-group-append">
-										<a class="btn btn-success" style="max-width: 2rem" href="#">-</a>
+										<button id="sub<?= $id ?>" class="btn btn-success"
+										        style="max-width: 2rem"
+										        onclick="sub(<?= $id ?>)">-</button>
 									</div>
 								</div>
 								<div class="btn-group" role="group" aria-label="Cart Actions">
@@ -90,3 +96,17 @@ if (isset($_GET["action"])) {
 		</div>
 	<?php }
 } ?>
+
+<script>
+	function add(id) {
+		let qty = document.getElementById("qty" + id);
+		qty.value = qty.valueAsNumber + 1;
+	}
+
+	function sub(id) {
+		let qty = document.getElementById("qty" + id);
+		if (qty.valueAsNumber >= 1) {
+			qty.value = qty.valueAsNumber - 1;
+		}
+	}
+</script>
