@@ -81,7 +81,14 @@ insert into traits(title, is_positive, description) VALUES
     ('Loud Sleeper', false, 'Snores loudly'),
     ('Diver\'s Lung', true, 'Decreased Air Consumption Rate'),
     ('Allergies', false, 'Allergic reaction to Floral Scent'),
-    ('Early Bird', true, 'Gains morning Attribute bonuses');
+    ('Early Bird', true, 'Gains morning Attribute bonuses'),
+    ('Flatulent', false, ''),
+    ('Yokel', false, 'Cannot do <b>Researching Errands</b>'),
+    ('Biohazardous', false, 'Decreased <b>Germ Resistance</b>'),
+    ('Quick Learner', true, 'Increased <b>Science</b>'),
+    ('Caregiver', true, 'Increased <b>Medicine</b>'),
+    ('Grease Monkey', true, 'Increased <b>Machinery</b>'),
+    ('Narcoleptic', false, 'Falls asleep periodically');
 
 create table duplicant_traits
 (
