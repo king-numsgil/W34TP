@@ -17,13 +17,22 @@ if (isset($_GET["action"])) {
 
 	$action = $_GET["action"];
 	if ($action === "add" && isset($_GET["id"])) {
-		$_SESSION["cart"][] = $_GET["id"];
+		if (isset($_SESSION["cart"][$_GET["id"]])) {
+			$_SESSION["cart"][$_GET["id"]]++;
+		} else {
+			$_SESSION["cart"][$_GET["id"]] = 1;
+		}
+
 		header("Location: index.php?page=cart");
 		die();
 	}
-	if ($action === "remove" && isset($_GET["i"])) {
-		unset($_SESSION["cart"][$_GET["i"]]);
-		$_SESSION["cart"] = array_values($_SESSION["cart"]);
+	if ($action === "remove" && isset($_GET["id"])) {
+		if (isset($_SESSION["cart"][$_GET["id"]])) {
+			$_SESSION["cart"][$_GET["id"]]--;
+			if ($_SESSION["cart"][$_GET["id"]] <= 0) {
+				unset($_SESSION["cart"][$_GET["id"]]);
+			}
+		}
 		header("Location: index.php?page=cart");
 		die();
 	}
@@ -46,8 +55,8 @@ if (isset($_GET["action"])) {
 		</div>
 	<?php } else { ?>
 		<div class="row">
-			<?php for ($i = 0; $i < count($_SESSION["cart"]); $i++) {
-				$row = $db->query("SELECT * FROM duplicants WHERE id = {$_SESSION["cart"][$i]}")->fetch_assoc();
+			<?php foreach ($_SESSION["cart"] as $id => $qty) {
+				$row = $db->query("SELECT * FROM duplicants WHERE id = $id")->fetch_assoc();
 				?>
 				<div class="col-lg-4 col-md-10 mt-auto" style="margin-bottom: 1rem">
 					<div class="card">
@@ -56,9 +65,9 @@ if (isset($_GET["action"])) {
 						<div class="card-body">
 							<p class="card-text" style="margin-top: 0">Say hello to <?= $row["name"] ?></p>
 						</div>
-						<div class="card-footer text-center">
-							<div class="btn-group" role="group" aria-label="Basic example">
-								<a class="btn btn-sm btn-danger" href="index.php?page=cart&action=remove&i=<?= $i ?>">
+						<div class="card-footer text-center" style="padding: 0">
+							<div class="btn-group" style="width: 100%" role="group" aria-label="Cart Actions">
+								<a class="btn btn-sm btn-danger" href="index.php?page=cart&action=remove&id=<?= $row["id"] ?>">
 									Remove
 								</a>
 								<a class="btn btn-sm btn-primary" href="index.php?page=details&id=<?= $row["id"] ?>">
