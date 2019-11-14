@@ -397,6 +397,18 @@ div.stat-block {
   padding-top: 15px;
 }
 
+div.card > div.card-body > p.card-text:first-child {
+  margin-top: 0;
+}
+
+div.card > div.card-body > p:first-child {
+  margin-top: 0;
+}
+
+div.card > div.card-body > p:last-child {
+  margin-bottom: 0;
+}
+
 /*.btn {
   font-size: 14px;
   font-weight: 800;

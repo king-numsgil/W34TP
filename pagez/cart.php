@@ -63,15 +63,18 @@ if (isset($_GET["action"])) {
 						<div class="card-header">Dupe #<?= $row["id"] ?></div>
 						<img class="card-img-top" src="<?= $row['picture'] ?>" alt="Dupe"/>
 						<div class="card-body">
-							<p class="card-text" style="margin-top: 0">Say hello to <?= $row["name"] ?></p>
+							<p class="card-text">Say hello to <?= $row["name"] ?></p>
 						</div>
 						<div class="card-footer text-center" style="padding: 0">
 							<div class="btn-group" style="width: 100%" role="group" aria-label="Cart Actions">
-								<a class="btn btn-sm btn-danger" href="index.php?page=cart&action=remove&id=<?= $row["id"] ?>">
-									Remove
-								</a>
-								<a class="btn btn-sm btn-primary" href="index.php?page=details&id=<?= $row["id"] ?>">
+								<a class="btn btn-sm btn-success" style="max-width: 2rem; border-top-left-radius: 0" href="#">+</a>
+								<a class="btn btn-sm btn-outline-dark disabled" href="#"><?= $qty ?></a>
+								<a class="btn btn-sm btn-success" style="max-width: 2rem" href="#">-</a>
+								<a class="btn btn-sm btn-primary" href="index.php?page=details&id=<?= $id ?>">
 									Details
+								</a>
+								<a class="btn btn-sm btn-danger" style="border-top-right-radius: 0" href="index.php?page=cart&action=remove&id=<?= $id ?>">
+									Remove
 								</a>
 							</div>
 						</div>

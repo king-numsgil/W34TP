@@ -14,7 +14,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 					<div class="card-header">Dupe #<?= $row["id"] ?></div>
 					<img class="card-img-top" src="<?= $row['picture'] ?>" alt="Dupe"/>
 					<div class="card-body">
-						<p class="card-text" style="margin-top: 0">Say hello to <?= $row["name"] ?></p>
+						<p class="card-text">Say hello to <?= $row["name"] ?></p>
 					</div>
 					<div class="card-footer" style="padding: 0">
 						<div class="btn-group" style="width: 100%" role="group" aria-label="Dupe Footer">
