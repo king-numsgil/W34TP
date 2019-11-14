@@ -57,7 +57,8 @@ insert into duplicants(name, attr_construction, attr_excavation, attr_machinery,
     ('Hannah', 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/03.png', 19),
     ('Judy', 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 'pics_test/04.png', 47),
     ('Troy', 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/05.png', 2),
-    ('Yeep', 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 'pics_test/06.png', 25);
+    ('Yeep', 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 'pics_test/06.png', 25),
+    ('Leia',0,7,0,0,0,0,7,0,0,0,0,'pics_test/07.png',68);
 
 create table traits
 (
@@ -79,7 +80,8 @@ insert into traits(title, is_positive, description) VALUES
     ('Gourmet', true, 'Increased Cuisine<br />Decreased Food Morale Bonus'),
     ('Loud Sleeper', false, 'Snores loudly'),
     ('Diver\'s Lung', true, 'Decreased Air Consumption Rate'),
-    ('Allergies', false, 'Allergic reaction to Floral Scent');
+    ('Allergies', false, 'Allergic reaction to Floral Scent'),
+    ('Early Bird', true, 'Gains morning Attribute bonuses');
 
 create table duplicant_traits
 (
