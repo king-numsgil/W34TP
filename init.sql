@@ -119,4 +119,4 @@ insert into duplicant_traits(dupe_id, trait_id) VALUES
     (3, 5), (3, 6),
     (4, 19), (4, 15),
     (5, 14), (5, 11),
-    (7,17), (7, 22);
+    (7,17), (7, 22), (7, 4);
