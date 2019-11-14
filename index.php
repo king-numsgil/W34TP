@@ -65,7 +65,13 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 					$user = $db->query("SELECT * FROM users where email = '{$_SESSION["login"]}'");
 					$data = $user->fetch_assoc();
 					$name = $data["first_name"] . " " . $data["last_name"];
+
+					if ($data["is_admin"]) {
 					?>
+						<li class="nav-item">
+							<a class="nav-link" href="index.php?page=admin">Admin</a>
+						</li>
+					<?php } ?>
 
 					<li class="nav-item">
 						<a class="nav-link" href="index.php?page=logout">Log out</a>
