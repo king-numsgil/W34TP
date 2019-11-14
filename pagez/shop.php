@@ -16,13 +16,13 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 					<div class="card-body">
 						<p class="card-text" style="margin-top: 0">Say hello to <?= $row["name"] ?></p>
 					</div>
-					<div class="card-footer clearfix">
-						Interested?
-						<div class="btn-group float-md-right" role="group" aria-label="Basic example">
+					<div class="card-footer" style="padding: 0">
+						<div class="btn-group" style="width: 100%" role="group" aria-label="Dupe Footer">
+							<a class="btn btn-sm btn-light disabled" style="border-top-left-radius: 0" href="#">Interested?</a>
 							<a class="btn btn-sm btn-success" href="index.php?page=cart&action=add&id=<?= $row["id"] ?>">
 								Add to Cart
 							</a>
-							<a class="btn btn-sm btn-primary" href="index.php?page=details&id=<?= $row["id"] ?>">
+							<a class="btn btn-sm btn-primary" style="border-top-right-radius: 0" href="index.php?page=details&id=<?= $row["id"] ?>">
 								Details
 							</a>
 						</div>
