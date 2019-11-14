@@ -16,6 +16,33 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 					<div class="card-body">
 						<p class="card-text">Say hello to <?= $row["name"] ?></p>
 					</div>
+					<ul class="list-group list-group-flush">
+						<?php
+							$traits = $db->query("
+								SELECT title, is_positive FROM traits 
+								INNER JOIN duplicant_traits 
+								ON duplicant_traits.trait_id = traits.id
+								INNER JOIN duplicants
+								ON duplicants.id = duplicant_traits.dupe_id
+								WHERE duplicants.id = {$row["id"]}
+								");
+							while($t_row = $traits->fetch_assoc()){	
+								if($t_row["is_positive"] == true){
+								?>
+							<li class="list-group-item" style="color:green"><?= $t_row["title"]?></li>
+						<?php
+								}
+								else{
+						?>
+							<li class="list-group-item" style="color:red"><?= $t_row["title"]?></li>
+						<?php
+								}
+							}
+						?>
+						<li class="list-group-item text-muted" style="padding: 4px 20px;">
+							<small><?= $row["price"] ?>$ Each</small>
+						</li>
+					</ul>
 					<div class="card-footer" style="padding: 0">
 						<div class="btn-group" style="width: 100%" role="group" aria-label="Dupe Footer">
 							<a class="btn btn-sm btn-light disabled" style="border-top-left-radius: 0" href="#">Interested?</a>

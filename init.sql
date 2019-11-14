@@ -75,11 +75,11 @@ create unique index traits_title_uindex
     on traits (title);
 
 insert into traits(title, is_positive, description) VALUES
-    ('Bottomless Stomach', false, 'Decreased Callories'),
+    ('Bottomless Stomach', false, 'Decreased <b>Callories</b>'),
     ('Night Owl', true, 'Gains nighttime Attribute bonuses'),
-    ('Gourmet', true, 'Increased Cuisine<br />Decreased Food Morale Bonus'),
+    ('Gourmet', true, 'Increased <b>Cuisine</b><br/>Decreased <b>Food Morale Bonus</b>'),
     ('Loud Sleeper', false, 'Snores loudly'),
-    ('Diver\'s Lung', true, 'Decreased Air Consumption Rate'),/*5*/
+    ('Diver\'s Lung', true, 'Decreased <b>Air Consumption Rate</b>'),/*5*/
     ('Allergies', false, 'Allergic reaction to Floral Scent'),
     ('Early Bird', true, 'Gains morning Attribute bonuses'),
     ('Flatulent', false, 'Farts frequently'),
@@ -95,7 +95,8 @@ insert into traits(title, is_positive, description) VALUES
     ('Small Bladder', false, 'Increased <b>Bladder</b>'),
     ('Squeamish', false, 'Cannot do <b>Doctoring Errands</b>'),
     ('Anemic', false, 'Decreased <b>Athletics</b>'), /*20*/
-    ('Buff', true, 'Increased <b>Strength</b>');
+    ('Buff', true, 'Increased <b>Strength</b>'),
+    ('Interior Decorator', true, 'Increased <b>Creativity</b><br/>Decreased <b>Decor Morale Bonus</b>');
 
 create table duplicant_traits
 (
@@ -117,4 +118,5 @@ insert into duplicant_traits(dupe_id, trait_id) VALUES
     (2, 3), (2, 4),
     (3, 5), (3, 6),
     (4, 19), (4, 15),
-    (5, 14), (5, 11);
+    (5, 14), (5, 11),
+    (7,17), (7, 22);
