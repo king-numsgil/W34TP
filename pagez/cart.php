@@ -2,8 +2,7 @@
 $user = null;
 
 setlocale(LC_MONETARY, 'en_CA');
-function money_format($format, $number)
-{
+function money_format($format, $number) {
 	$regex = '/%((?:[\^!\-]|\+|\(|\=.)*)([0-9]+)?' .
 		'(?:#([0-9]+))?(?:\.([0-9]+))?([in%])/';
 	if (setlocale(LC_MONETARY, 0) == 'C') {
@@ -18,7 +17,7 @@ function money_format($format, $number)
 			'nogroup' => preg_match('/\^/', $fmatch[1]) > 0,
 			'usesignal' => preg_match('/\+|\(/', $fmatch[1], $match) ? $match[0] : '+',
 			'nosimbol' => preg_match('/\!/', $fmatch[1]) > 0,
-			'isleft' => preg_match('/\-/', $fmatch[1]) > 0
+			'isleft' => preg_match('/\-/', $fmatch[1]) > 0,
 		);
 		$width = trim($fmatch[2]) ? (int)$fmatch[2] : 0;
 		$left = trim($fmatch[3]) ? (int)$fmatch[3] : 0;

@@ -24,13 +24,15 @@ if (isset($_GET["action"]) && empty($_GET["action"])) {
 		<div class="control-group">
 			<div class="form-group floating-label-form-group controls">
 				<label for="txtLoginEmail">Email Address</label>
-				<input id="txtLoginEmail" type="email" class="form-control" placeholder="Email Address" name="email" required/>
+				<input id="txtLoginEmail" type="email" class="form-control" placeholder="Email Address" name="email"
+				       required/>
 			</div>
 		</div>
 		<div class="control-group">
 			<div class="form-group floating-label-form-group controls">
 				<label for="txtLoginPassword">Password</label>
-				<input id="txtLoginPassword" type="password" class="form-control" placeholder="Password" name="password" required/>
+				<input id="txtLoginPassword" type="password" class="form-control" placeholder="Password" name="password"
+				       required/>
 			</div>
 		</div>
 		<br>

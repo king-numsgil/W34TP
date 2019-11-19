@@ -39,9 +39,9 @@ if (!isset($_GET["action"])) { ?>
 
 	if ($action === "modify") {
 		include_once "admin/modify.php";
-	} elseif ($action === "create") {
+	} else if ($action === "create") {
 		include_once "admin/create.php";
-	} elseif ($action === "delete") {
+	} else if ($action === "delete") {
 		include_once "admin/delete.php";
 	}
 }
