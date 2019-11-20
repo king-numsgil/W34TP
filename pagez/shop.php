@@ -3,39 +3,53 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 	header("Location: index.php?page=shop&offset=0&limit=6");
 	die();
 } else {
+	$filter = " ";
+	if(isset($_POST["trait_good"]) && $_POST["trait_bad"] && $_POST["trait_good"] != 0 && $_POST["trait_bad"] != 0){
+		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_POST['trait_bad']} OR duplicant_traits.trait_id = {$_POST['trait_good']} GROUP BY duplicants.id";
+	}
+	else{
+		if(isset($_POST["trait_good"]) && $_POST["trait_good"] != 0){
+			$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_POST['trait_good']}";
+		}
+		if(isset($_POST["trait_bad"]) && $_POST["trait_bad"] != 0){
+			$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_POST['trait_bad']}";
+		}
+	}
+	
 	$offset = $_GET["offset"];
 	$limit = $_GET["limit"];
 	$count = $db->query("SELECT COUNT(id) FROM duplicants")->fetch_assoc()["COUNT(id)"];
-	$result = $db->query("SELECT * FROM duplicants LIMIT $limit OFFSET $offset");
+	$result = $db->query("SELECT * FROM duplicants ".$filter." LIMIT $limit OFFSET $offset");
 
-	$traits_good = $db->query("SELECT title FROM traits WHERE is_positive = true");
-	$traits_bad = $db->query("SELECT title FROM traits WHERE is_positive = false");
-
-
-	?>
+	$true = 'true';
+	$traits_good = $db->query("SELECT title, id FROM traits WHERE is_positive = ".$true);
+	#$traits_good = $db->query("SELECT title, id FROM traits WHERE is_positive = true");
+	$traits_bad = $db->query("SELECT title, id FROM traits WHERE is_positive = false");
+?>
 	<button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#filter"
 	        aria-expanded="false" aria-controls="filter">
 		Traits Filter
 	</button>
 	<div class="collapse bg-light" style="padding:12px" id="filter">
+		<!-- Form for search filters -->
 		<form action="#" method="post" class="row">
 			<div class="col-12 text-muted mb-2">
-				Pick what you want in your dupe : a good trait, a bad trait, or both! We'll sort the duplicants with
+				Pick what you want in your dupe : a good trait, a bad trait, or both! We'll sort out the duplicants with
 				those traits for you.
 			</div>
 			<div class="col-md-6">
 				<select name="trait_good" class="browser-default custom-select custom-select-lg mb-3">
-					<option class="text-muted">-- Good Traits --</option>
+					<option class="text-muted" value="0">-- Good Traits --</option>
 					<?php while ($good_row = $traits_good->fetch_assoc()) { ?>
-						<option value="<?= $good_row["title"] ?>"><?= $good_row["title"] ?></option>
+						<option value="<?= $good_row["id"] ?>" <?= (isset($_POST["trait_good"]) && $_POST["trait_good"]===$good_row["id"])?'selected':''?>><?= $good_row["title"] ?></option>
 					<?php } ?>
 				</select>
 			</div>
 			<div class="col-md-6">
 				<select name="trait_bad" class="browser-default custom-select custom-select-lg mb-3">
-					<option class="text-muted">-- Bad Traits --</option>
+					<option class="text-muted" value="0">-- Bad Traits --</option>
 					<?php while ($bad_row = $traits_bad->fetch_assoc()) { ?>
-						<option value="<?= $bad_row["title"] ?>"><?= $bad_row["title"] ?></option>
+						<option value="<?= $bad_row["id"] ?>" <?= (isset($_POST["trait_bad"]) && $_POST["trait_bad"]===$bad_row["id"])?'selected':''?>><?= $bad_row["title"] ?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -45,6 +59,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 				</button>
 			</div>
 		</form>
+		<!-- End of Form for search filters -->
 	</div>
 
 	<div class="row align-items-start">
