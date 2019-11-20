@@ -90,7 +90,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 		</form>
 		<!-- End of Form for search filters -->
 	</div>
-
+	
 	<div class="row align-items-start">
 		<?php while ($row = $result->fetch_assoc()) { ?>
 			<div class="col-lg-4 col-md-10" style="margin-bottom: 1rem">
