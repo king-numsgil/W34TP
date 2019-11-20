@@ -67,8 +67,16 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 
 					if ($user["is_admin"]) {
 					?>
-						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin">Admin</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="index.php?page=admin" id="navbar-admin"
+							   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Admin
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbar-admin">
+								<a class="dropdown-item" href="index.php?page=admin&action=create">Create</a>
+								<a class="dropdown-item" href="index.php?page=admin&action=modify">Modify</a>
+								<a class="dropdown-item" href="index.php?page=admin&action=delete">Delete</a>
+							</div>
 						</li>
 					<?php } ?>
 
