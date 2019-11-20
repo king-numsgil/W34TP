@@ -12,6 +12,8 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 	$filter = " ";
 	if(!isset($_SESSION["search"])){
 		$_SESSION["search"] = array();
+		$_SESSION["search"]["good"] = 0;
+		$_SESSION["search"]["bad"] = 0;
 	}
 	if(isset($_POST["trait_good"]) && isset($_POST["trait_bad"]) && $_POST["trait_good"] != 0 && $_POST["trait_bad"] != 0){
 		$_SESSION['search']['good'] = $_POST['trait_good'];
