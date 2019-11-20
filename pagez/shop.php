@@ -1,5 +1,5 @@
 <?php
-if(isset($_GET["clear"])){
+if (isset($_GET["clear"])) {
 	$_SESSION["search"]["good"] = 0;
 	$_SESSION["search"]["bad"] = 0;
 	header("Location: index.php?page=shop&offset=0&limit=6");
@@ -10,44 +10,48 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 	die();
 } else {
 	$filter = " ";
-	if(!isset($_SESSION["search"])){
+	if (!isset($_SESSION["search"])) {
 		$_SESSION["search"] = array();
 		$_SESSION["search"]["good"] = 0;
 		$_SESSION["search"]["bad"] = 0;
 	}
-	if(isset($_POST["trait_good"]) && isset($_POST["trait_bad"]) && $_POST["trait_good"] != 0 && $_POST["trait_bad"] != 0){
+	if (isset($_POST["trait_good"]) && isset($_POST["trait_bad"]) &&
+		$_POST["trait_good"] != 0 && $_POST["trait_bad"] != 0) {
 		$_SESSION['search']['good'] = $_POST['trait_good'];
 		$_SESSION['search']['bad'] = $_POST['trait_bad'];
-	}
-	else{
-		if(isset($_POST["trait_good"]) && $_POST["trait_good"] != 0){
+	} else {
+		if (isset($_POST["trait_good"]) && $_POST["trait_good"] != 0) {
 			$_SESSION["search"]["good"] = $_POST["trait_good"];
 			$_SESSION['search']['bad'] = 0;
 		}
-		if(isset($_POST["trait_bad"]) && $_POST["trait_bad"] != 0){
+		if (isset($_POST["trait_bad"]) && $_POST["trait_bad"] != 0) {
 			$_SESSION['search']['bad'] = $_POST['trait_bad'];
-			$_SESSION['search']['good'] = 0;			
+			$_SESSION['search']['good'] = 0;
 		}
 	}
-	if($_SESSION["search"]["good"] != 0 && $_SESSION["search"]["bad"] != 0){
-		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_SESSION['search']['good']} OR duplicant_traits.trait_id = {$_SESSION['search']['bad']} GROUP BY duplicants.id";
+	if ($_SESSION["search"]["good"] != 0 && $_SESSION["search"]["bad"] != 0) {
+		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id
+		WHERE duplicant_traits.trait_id = {$_SESSION['search']['good']}
+			OR duplicant_traits.trait_id = {$_SESSION['search']['bad']}
+		GROUP BY duplicants.id";
+	} else if ($_SESSION["search"]["good"] != 0) {
+		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id
+		WHERE duplicant_traits.trait_id = {$_SESSION['search']['good']}";
+	} else if ($_SESSION['search']['bad'] != 0) {
+		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id
+		WHERE duplicant_traits.trait_id = {$_SESSION['search']['bad']}";
+	} else {
+		$filter = "";
 	}
-	else if($_SESSION["search"]["good"] != 0){
-		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_SESSION['search']['good']}";
-	}
-	else if($_SESSION['search']['bad'] != 0){
-		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_SESSION['search']['bad']}";
-	}
-	else{ $filter = ""; }
-	
+
 	$offset = $_GET["offset"];
 	$limit = $_GET["limit"];
-	$count = $db->query("SELECT COUNT(id) FROM duplicants ".$filter)->fetch_assoc()["COUNT(id)"];
-	$result = $db->query("SELECT * FROM duplicants ".$filter." LIMIT $limit OFFSET $offset");
+	$count = $db->query("SELECT COUNT(id) FROM duplicants " . $filter)->fetch_assoc()["COUNT(id)"];
+	$result = $db->query("SELECT * FROM duplicants " . $filter . " LIMIT $limit OFFSET $offset");
 
 	$traits_good = $db->query("SELECT title, id FROM traits WHERE is_positive = true");
 	$traits_bad = $db->query("SELECT title, id FROM traits WHERE is_positive = false");
-?>
+	?>
 	<button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#filter"
 	        aria-expanded="false" aria-controls="filter">
 		Traits Filter
@@ -66,7 +70,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 				<select name="trait_good" class="browser-default custom-select custom-select-lg mb-3">
 					<option class="text-muted" value="0">-- Good Traits --</option>
 					<?php while ($good_row = $traits_good->fetch_assoc()) { ?>
-						<option value="<?= $good_row["id"] ?>" <?= (isset($_POST["trait_good"]) && $_POST["trait_good"]===$good_row["id"])?'selected':''?>><?= $good_row["title"] ?></option>
+						<option value="<?= $good_row["id"] ?>" <?= (isset($_POST["trait_good"]) && $_POST["trait_good"] === $good_row["id"]) ? 'selected' : '' ?>><?= $good_row["title"] ?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -74,7 +78,7 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 				<select name="trait_bad" class="browser-default custom-select custom-select-lg mb-3">
 					<option class="text-muted" value="0">-- Bad Traits --</option>
 					<?php while ($bad_row = $traits_bad->fetch_assoc()) { ?>
-						<option value="<?= $bad_row["id"] ?>" <?= (isset($_POST["trait_bad"]) && $_POST["trait_bad"]===$bad_row["id"])?'selected':''?>><?= $bad_row["title"] ?></option>
+						<option value="<?= $bad_row["id"] ?>" <?= (isset($_POST["trait_bad"]) && $_POST["trait_bad"] === $bad_row["id"]) ? 'selected' : '' ?>><?= $bad_row["title"] ?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -107,17 +111,12 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 								WHERE duplicants.id = {$row["id"]}
 								");
 						while ($t_row = $dupe_traits->fetch_assoc()) {
-							if ($t_row["is_positive"] == true) {
-								?>
+							if ($t_row["is_positive"] == true) { ?>
 								<li class="list-group-item" style="color:green"><?= $t_row["title"] ?></li>
-								<?php
-							} else {
-								?>
+							<?php } else { ?>
 								<li class="list-group-item" style="color:red"><?= $t_row["title"] ?></li>
-								<?php
-							}
-						}
-						?>
+							<?php }
+						} ?>
 						<li class="list-group-item text-muted" style="padding: 4px 20px;">
 							<small><?= $row["price"] ?>$ Each</small>
 						</li>
