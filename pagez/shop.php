@@ -1,34 +1,57 @@
 <?php
+if(isset($_GET["clear"])){
+	$_SESSION["search"]["good"] = 0;
+	$_SESSION["search"]["bad"] = 0;
+	header("Location: index.php?page=shop&offset=0&limit=6");
+	die();
+}
 if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 	header("Location: index.php?page=shop&offset=0&limit=6");
 	die();
 } else {
 	$filter = " ";
-	if(isset($_POST["trait_good"]) && $_POST["trait_bad"] && $_POST["trait_good"] != 0 && $_POST["trait_bad"] != 0){
-		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_POST['trait_bad']} OR duplicant_traits.trait_id = {$_POST['trait_good']} GROUP BY duplicants.id";
+	if(!isset($_SESSION["search"])){
+		$_SESSION["search"] = array();
+	}
+	if(isset($_POST["trait_good"]) && isset($_POST["trait_bad"]) && $_POST["trait_good"] != 0 && $_POST["trait_bad"] != 0){
+		$_SESSION['search']['good'] = $_POST['trait_good'];
+		$_SESSION['search']['bad'] = $_POST['trait_bad'];
 	}
 	else{
 		if(isset($_POST["trait_good"]) && $_POST["trait_good"] != 0){
-			$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_POST['trait_good']}";
+			$_SESSION["search"]["good"] = $_POST["trait_good"];
+			$_SESSION['search']['bad'] = 0;
 		}
 		if(isset($_POST["trait_bad"]) && $_POST["trait_bad"] != 0){
-			$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_POST['trait_bad']}";
+			$_SESSION['search']['bad'] = $_POST['trait_bad'];
+			$_SESSION['search']['good'] = 0;			
 		}
 	}
+	if($_SESSION["search"]["good"] != 0 && $_SESSION["search"]["bad"] != 0){
+		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_SESSION['search']['good']} OR duplicant_traits.trait_id = {$_SESSION['search']['bad']} GROUP BY duplicants.id";
+	}
+	else if($_SESSION["search"]["good"] != 0){
+		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_SESSION['search']['good']}";
+	}
+	else if($_SESSION['search']['bad'] != 0){
+		$filter = "INNER JOIN duplicant_traits ON duplicants.id = duplicant_traits.dupe_id WHERE duplicant_traits.trait_id = {$_SESSION['search']['bad']}";
+	}
+	else{ $filter = ""; }
 	
 	$offset = $_GET["offset"];
 	$limit = $_GET["limit"];
-	$count = $db->query("SELECT COUNT(id) FROM duplicants")->fetch_assoc()["COUNT(id)"];
+	$count = $db->query("SELECT COUNT(id) FROM duplicants ".$filter)->fetch_assoc()["COUNT(id)"];
 	$result = $db->query("SELECT * FROM duplicants ".$filter." LIMIT $limit OFFSET $offset");
 
-	$true = 'true';
-	$traits_good = $db->query("SELECT title, id FROM traits WHERE is_positive = ".$true);
-	#$traits_good = $db->query("SELECT title, id FROM traits WHERE is_positive = true");
+	$traits_good = $db->query("SELECT title, id FROM traits WHERE is_positive = true");
 	$traits_bad = $db->query("SELECT title, id FROM traits WHERE is_positive = false");
 ?>
 	<button class="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#filter"
 	        aria-expanded="false" aria-controls="filter">
 		Traits Filter
+	</button>
+	<button class="btn btn-warning mb-3" type="button" onclick="window.location='index.php?page=shop&clear'">
+		Clear Filters
 	</button>
 	<div class="collapse bg-light" style="padding:12px" id="filter">
 		<!-- Form for search filters -->
