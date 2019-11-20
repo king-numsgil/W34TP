@@ -10,7 +10,8 @@ $mode = $_GET["mode"];
 <h1>Create</h1>
 <ul class="nav nav-tabs">
 	<li class="nav-item">
-		<a class="nav-link <?= $mode === "dupe" ? "active" : "" ?>" href="index.php?page=admin&action=create&mode=dupe">
+		<a class="nav-link <?= $mode === "dupe" ? "active" : "" ?>"
+		   href="index.php?page=admin&action=create&mode=dupe">
 			Duplicant
 		</a>
 	</li>
@@ -241,7 +242,7 @@ $mode = $_GET["mode"];
 		</form>
 
 	<?php }
- } ?>
+} ?>
 
 <hr/>
 <a class="btn btn-block btn-success" href="index.php?page=admin">Back to Administration page</a>
