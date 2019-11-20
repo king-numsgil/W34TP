@@ -21,7 +21,7 @@ if (!isset($_GET["action"])) { ?>
 				Create
 			</a>
 		</div>
-		
+
 		<div class="col-md-3">
 			<a class="btn btn-lg btn-block btn-warning" href="index.php?page=admin&action=modify">
 				Modify

@@ -65,8 +65,7 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 					$user = $db->query("SELECT * FROM users where email = '{$_SESSION["login"]}'")->fetch_assoc();
 					$name = $user["first_name"] . " " . $user["last_name"];
 
-					if ($user["is_admin"]) {
-					?>
+					if ($user["is_admin"]) { ?>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="index.php?page=admin" id="navbar-admin"
 							   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
