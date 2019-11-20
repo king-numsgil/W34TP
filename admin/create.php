@@ -203,9 +203,45 @@ $mode = $_GET["mode"];
 		</form>
 
 	<?php }
-} else { ?>
+} else {
+	if (isset($_GET["apply"])) {
+		$db->query("INSERT INTO traits(title, is_positive, description) VALUES " .
+			"('{$_POST["title"]}', {$_POST["positive"]}, '{$_POST["desc"]}')");
+		header("Location: index.php?page=admin&action=create&mode=trait");
+		die();
+	} else { ?>
 
-<?php } ?>
+		<form class="mt-sm-4" method="post" action="index.php?page=admin&action=create&mode=trait&apply">
+			<div class="form-group row">
+				<label for="trait_title" class="col-sm-2 col-form-label">Title :</label>
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="trait_title" name="title" required maxlength="64"/>
+				</div>
+
+				<label for="trait_positive" class="col-sm-2 col-form-label">Positive? :</label>
+				<div class="col-sm-2">
+					<select class="form-control" id="trait_positive" name="positive">
+						<option value="true" selected>Positive</option>
+						<option value="false">Negative</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="trait_description" class="col-sm-2 col-form-label">Description :</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="trait_description" name="desc" required/>
+				</div>
+			</div>
+
+			<div class="form-group row justify-content-center">
+				<div class="col-sm-9">
+					<button type="submit" class="btn btn-block btn-warning">Save</button>
+				</div>
+			</div>
+		</form>
+
+	<?php }
+ } ?>
 
 <hr/>
 <a class="btn btn-block btn-success" href="index.php?page=admin">Back to Administration page</a>
