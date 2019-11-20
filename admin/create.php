@@ -41,8 +41,22 @@ $mode = $_GET["mode"];
 			"'{$_POST["pic"]}', " .
 			"'{$_POST["price"]}'" .
 			")");
-		header("Location: index.php?page=admin&action=create&mode=dupe");
-		die();
+		$id = $db->query("SELECT LAST_INSERT_ID()")->fetch_assoc()["LAST_INSERT_ID()"];
+		$db->query("INSERT INTO duplicant_traits(dupe_id, trait_id) VALUES " .
+			"($id, {$_POST["positive"]}), " .
+			"($id, {$_POST["negative"]})");
+
+		if ($_POST["extra"] === $_POST["positive"] || $_POST["extra"] === $_POST["negative"]) { ?>
+			<h2>Can't have duplicate Traits!</h2>
+		<?php
+		} else {
+			if ($_POST["extra"] !== 0) {
+				$db->query("INSERT INTO duplicant_traits(dupe_id, trait_id) VALUES " .
+					"($id, {$_POST["extra"]})");
+			}
+			header("Location: index.php?page=admin&action=create&mode=dupe");
+			die();
+		}
 	} else { ?>
 
 	<form class="mt-sm-4" method="post" action="index.php?page=admin&action=create&mode=dupe&apply">
@@ -62,72 +76,120 @@ $mode = $_GET["mode"];
 		<div class="form-group row">
 			<label for="dupe_agriculture" class="col-sm-2 col-form-label">Agriculture :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_agriculture" name="agriculture" required value="0"/>
+				<input type="number" class="form-control" id="dupe_agriculture" name="agriculture" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 
 			<label for="dupe_athletics" class="col-sm-2 col-form-label">Athletics :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_athletics" name="athletics" required value="0"/>
+				<input type="number" class="form-control" id="dupe_athletics" name="athletics" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 		</div>
 
 		<div class="form-group row">
 			<label for="dupe_construction" class="col-sm-2 col-form-label">Construction :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_construction" name="construction" required value="0"/>
+				<input type="number" class="form-control" id="dupe_construction" name="construction" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 
 			<label for="dupe_creativity" class="col-sm-2 col-form-label">Creativity :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_creativity" name="creativity" required value="0"/>
+				<input type="number" class="form-control" id="dupe_creativity" name="creativity" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 		</div>
 
 		<div class="form-group row">
 			<label for="dupe_cuisine" class="col-sm-2 col-form-label">Cuisine :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_cuisine" name="cuisine" required value="0"/>
+				<input type="number" class="form-control" id="dupe_cuisine" name="cuisine" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 
 			<label for="dupe_excavation" class="col-sm-2 col-form-label">Excavation :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_excavation" name="excavation" required value="0"/>
+				<input type="number" class="form-control" id="dupe_excavation" name="excavation" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 		</div>
 
 		<div class="form-group row">
 			<label for="dupe_husbandry" class="col-sm-2 col-form-label">Husbandry :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_husbandry" name="husbandry" required value="0"/>
+				<input type="number" class="form-control" id="dupe_husbandry" name="husbandry" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 
 			<label for="dupe_machinery" class="col-sm-2 col-form-label">Machinery :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_machinery" name="machinery" required value="0"/>
+				<input type="number" class="form-control" id="dupe_machinery" name="machinery" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 		</div>
 
 		<div class="form-group row">
 			<label for="dupe_medicine" class="col-sm-2 col-form-label">Medicine :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_medicine" name="medicine" required value="0"/>
+				<input type="number" class="form-control" id="dupe_medicine" name="medicine" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 
 			<label for="dupe_science" class="col-sm-2 col-form-label">Science :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_science" name="science" required value="0"/>
+				<input type="number" class="form-control" id="dupe_science" name="science" required value="0"
+				       step="1" min="-5" max="10"/>
 			</div>
 		</div>
 
 		<div class="form-group row">
 			<label for="dupe_strength" class="col-sm-2 col-form-label">Strength :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_strength" name="strength" required value="0"/>
+				<input type="number" class="form-control" id="dupe_strength" name="strength" required value="0"
+						step="1" min="-5" max="10"/>
 			</div>
 
 			<label for="dupe_price" class="col-sm-2 col-form-label">Price :</label>
 			<div class="col-sm-4">
-				<input type="number" class="form-control" id="dupe_price" name="price" required value="0.0"/>
+				<input type="number" class="form-control" id="dupe_price" name="price" required value="0.0"
+						step="0.25" min="0" max="100"/>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="dupe_positive" class="col-sm-2 col-form-label">Positive :</label>
+			<div class="col-sm-2">
+				<select class="form-control" id="dupe_positive" name="positive">
+					<?php
+					$result = $db->query("SELECT title, id FROM traits WHERE is_positive = true");
+					while ($trait = $result->fetch_assoc()) { ?>
+						<option value="<?= $trait["id"] ?>"><?= $trait["title"] ?></option>
+					<?php } ?>
+				</select>
+			</div>
+
+			<label for="dupe_negative" class="col-sm-2 col-form-label">Negative :</label>
+			<div class="col-sm-2">
+				<select class="form-control" id="dupe_negative" name="negative">
+					<?php
+					$result = $db->query("SELECT title, id FROM traits WHERE is_positive = false");
+					while ($trait = $result->fetch_assoc()) { ?>
+						<option value="<?= $trait["id"] ?>"><?= $trait["title"] ?></option>
+					<?php } ?>
+				</select>
+			</div>
+
+			<label for="dupe_extra" class="col-sm-2 col-form-label">Extra :</label>
+			<div class="col-sm-2">
+				<select class="form-control" id="dupe_extra" name="extra">
+					<option value="0" selected>None</option>
+					<?php
+					$result = $db->query("SELECT title, id FROM traits");
+					while ($trait = $result->fetch_assoc()) { ?>
+						<option value="<?= $trait["id"] ?>"><?= $trait["title"] ?></option>
+					<?php } ?>
+				</select>
 			</div>
 		</div>
 
