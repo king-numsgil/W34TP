@@ -56,7 +56,7 @@ $mode = $_GET["mode"];
 				$db->query("INSERT INTO duplicant_traits(dupe_id, trait_id) VALUES " .
 					"($id, {$_POST["extra"]})");
 			}
-			header("Location: index.php?page=admin&action=create&mode=dupe");
+			header("Location: index.php?page=details&id=".$id);
 			die();
 		}
 	} else { ?>
