@@ -212,11 +212,7 @@ $mode = $_GET["mode"];
 				alert("The <?= $_POST["title"]?> trait was succesfully created!");
 				window.location="index.php?page=admin&action=create&mode=trait";
 			</script>
-	<?php
-		/*header("Location: );
-		die();*/
-	} else { ?>
-
+	<?php } else { ?>
 		<form class="mt-sm-4" method="post" action="index.php?page=admin&action=create&mode=trait&apply">
 			<div class="form-group row">
 				<label for="trait_title" class="col-sm-2 col-form-label">Title :</label>

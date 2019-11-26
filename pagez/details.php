@@ -15,7 +15,16 @@ $t_result = $db->query("
 <div class="row justify-content-center">
 	<div class="col-8">
 		<div class="card" style="border-radius: .25rem .25rem 20px .25rem;">
-			<div class="card-header text-center"><h4><?= $row["name"] ?></h4></div>
+			<div class="card-header">
+				<div class="row justify-content-between">
+					<div class="col text-center">
+						<h4><?= $row["name"] ?></h4>
+					</div>
+					<div class="col-lg-4 text-center">
+						<p class="text-muted m-0"><?= $row["price"] ?>$</p>
+					</div>
+				</div>
+			</div>
 			<div class="card-body" style="padding: 0 15px 0 0;">
 				<div class="row">
 					<div class="col-lg-8" style="padding-right: 0">
