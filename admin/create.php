@@ -207,9 +207,14 @@ $mode = $_GET["mode"];
 } else {
 	if (isset($_GET["apply"])) {
 		$db->query("INSERT INTO traits(title, is_positive, description) VALUES " .
-			"('{$_POST["title"]}', {$_POST["positive"]}, '{$_POST["desc"]}')");
-		header("Location: index.php?page=admin&action=create&mode=trait");
-		die();
+			"('{$_POST["title"]}', {$_POST["positive"]}, '{$_POST["desc"]}')"); ?>
+			<script>
+				alert("The <?= $_POST["title"]?> trait was succesfully created!");
+				window.location="index.php?page=admin&action=create&mode=trait";
+			</script>
+	<?php
+		/*header("Location: );
+		die();*/
 	} else { ?>
 
 		<form class="mt-sm-4" method="post" action="index.php?page=admin&action=create&mode=trait&apply">
