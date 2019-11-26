@@ -307,8 +307,25 @@ $id = isset($_GET["id"]) ? $_GET["id"] : false;
 				</div>
 
 				<div class="form-group row justify-content-center">
-					<div class="col-sm-9">
+					<div class="col-sm-7">
 						<button type="submit" class="btn btn-block btn-warning">Save</button>
+					</div>
+					<div class="col-sm-2">
+						<button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#really" aria-expanded="false" aria-controls="really">Delete</button>
+					</div>
+				</div>
+				<div class="collapse row justify-content-center" id="really">
+					<div class="col-md-6">
+						<div class="card text-white bg-danger">
+							<div class="card-header">
+								AR u sure abawt dat?								
+								<a href="index.php?page=admin&action=delete&mode=trait&id=<?= $id?>" class="btn btn-outline-dark float-right">Do it!</a>
+								<button class="btn btn-outline-light float-right mr-2" data-toggle="collapse" data-target="#really" aria-expanded="false" aria-controls="really">Spare</button>
+							</div>
+							<div class="card-body">
+								<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/cm5UUDclHfbgZYk1SW" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</form>
