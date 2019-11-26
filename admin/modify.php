@@ -253,42 +253,68 @@ $id = isset($_GET["id"]) ? $_GET["id"] : false;
 	}
 } else {
 	if (isset($_GET["apply"])) {
-		$db->query("INSERT INTO traits(title, is_positive, description) VALUES " .
-			"('{$_POST["title"]}', {$_POST["positive"]}, '{$_POST["desc"]}')");
-		header("Location: index.php?page=admin&action=create&mode=trait");
+		$db->query("UPDATE traits SET " .
+			"title = '{$_POST["title"]}', " .
+			"description = '{$_POST["desc"]}', " .
+			"is_positive = {$_POST["positive"]}" .
+			" WHERE id = $id");
+		header("Location: index.php?page=admin&action=modify&mode=trait&id=$id");
 		die();
 	} else { ?>
 
-		<form class="mt-sm-4" method="post" action="index.php?page=admin&action=modify&mode=trait&apply">
-			<div class="form-group row">
-				<label for="trait_title" class="col-sm-2 col-form-label">Title :</label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" id="trait_title" name="title" required maxlength="64"/>
-				</div>
-
-				<label for="trait_positive" class="col-sm-2 col-form-label">Positive? :</label>
-				<div class="col-sm-2">
-					<select class="form-control" id="trait_positive" name="positive">
-						<option value="true" selected>Positive</option>
-						<option value="false">Negative</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="trait_description" class="col-sm-2 col-form-label">Description :</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="trait_description" name="desc" required/>
-				</div>
-			</div>
-
-			<div class="form-group row justify-content-center">
-				<div class="col-sm-9">
-					<button type="submit" class="btn btn-block btn-warning">Save</button>
-				</div>
-			</div>
+		<form class="mt-sm-4 form-inline" method="get" action="index.php">
+			<input type="hidden" name="page" value="admin"/>
+			<input type="hidden" name="action" value="modify"/>
+			<input type="hidden" name="mode" value="trait"/>
+			<select class="form-control" name="id">
+				<?php
+				$result = $db->query("SELECT title, id FROM traits ORDER BY title");
+				while ($trait = $result->fetch_assoc()) { ?>
+					<option value="<?= $trait["id"] ?>" <?= ($id !== false && $id === $trait["id"]) ? "selected" : "" ?>>
+						<?= $trait["title"] ?>
+					</option>
+				<?php } ?>
+			</select>
+			<button type="submit" class="btn btn-info">Load</button>
 		</form>
 
-	<?php }
+		<?php if ($id !== false) { ?>
+
+			<form class="mt-sm-4" method="post"
+			      action="index.php?page=admin&action=modify&mode=trait&id=<?= $id ?>&apply">
+				<?php $trait = $db->query("SELECT * FROM traits WHERE id = $id")->fetch_assoc(); ?>
+				<div class="form-group row">
+					<label for="trait_title" class="col-sm-2 col-form-label">Title :</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="trait_title" name="title" required maxlength="64"
+						       value="<?= $trait["title"] ?>"/>
+					</div>
+
+					<label for="trait_positive" class="col-sm-2 col-form-label">Positive? :</label>
+					<div class="col-sm-2">
+						<select class="form-control" id="trait_positive" name="positive">
+							<option value="true" <?= $trait["is_positive"] ? "selected" : "" ?>>Positive</option>
+							<option value="false" <?= !$trait["is_positive"] ? "selected" : "" ?>>Negative</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="trait_description" class="col-sm-2 col-form-label">Description :</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="trait_description" name="desc" required
+						       value="<?= $trait["description"] ?>"/>
+					</div>
+				</div>
+
+				<div class="form-group row justify-content-center">
+					<div class="col-sm-9">
+						<button type="submit" class="btn btn-block btn-warning">Save</button>
+					</div>
+				</div>
+			</form>
+
+		<?php }
+	}
 } ?>
 
 <hr/>
