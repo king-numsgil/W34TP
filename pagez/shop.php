@@ -91,6 +91,29 @@ if (!isset($_GET["offset"]) || !isset($_GET["limit"])) {
 		<!-- End of Form for search filters -->
 	</div>
 	
+	<div class="row" style="margin-bottom:16px;">
+		<div class="col text-left">
+			<?php if ($offset > 0) { ?>
+				<a class="btn btn-outline-danger"
+				   href="index.php?page=shop&offset=<?= max($offset - $limit, 0) ?>&limit=<?= $limit ?>">
+					Previous <?= $limit ?>
+				</a>
+			<?php } else { ?>
+				<a class="btn btn-outline-danger disabled" href="#">Previous <?= $limit ?></a>
+			<?php } ?>
+		</div>
+		<div class="col text-right">
+			<?php if ($offset < $count - $limit) { ?>
+				<a class="btn btn-outline-danger"
+				   href="index.php?page=shop&offset=<?= min($offset + $limit, $count - $limit) ?>&limit=<?= $limit ?>">
+					Next <?= $limit ?>
+				</a>
+			<?php } else { ?>
+				<a class="btn btn-outline-danger disabled" href="#">Next <?= $limit ?></a>
+			<?php } ?>
+		</div>
+	</div>
+
 	<div class="row align-items-start">
 		<?php while ($row = $result->fetch_assoc()) { ?>
 			<div class="col-lg-4 col-md-10" style="margin-bottom: 1rem">
