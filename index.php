@@ -74,7 +74,6 @@ if (!isset($_GET["page"]) || empty($_GET["page"]) || !file_exists("pagez/" . $_G
 							<div class="dropdown-menu" aria-labelledby="navbar-admin">
 								<a class="dropdown-item" href="index.php?page=admin&action=create">Create</a>
 								<a class="dropdown-item" href="index.php?page=admin&action=modify">Modify</a>
-								<a class="dropdown-item" href="index.php?page=admin&action=delete">Delete</a>
 							</div>
 						</li>
 					<?php } ?>
