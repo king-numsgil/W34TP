@@ -19,7 +19,7 @@
 	else if($mode === "trait"){
 		$trait_found = $db->query("SELECT count(trait_id) FROM duplicant_traits WHERE trait_id = ".$_GET["id"])->fetch_assoc()["count(trait_id)"];
 
-		if($trait_found === 0){
+		if($trait_found < 1) {
 			$db->query("DELETE FROM traits WHERE id = ".$_GET["id"]);
 ?>
 			<script>
@@ -27,7 +27,7 @@
 				window.location="index.php?page=admin&action=modify&mode=trait";
 			</script>
 <?php
-		} else{ ?>
+		} else { ?>
 			<script>
 				alert("Cannot delete this trait, unless you are heartless and want duplicants to lose a piece of their personnality... Anyway, no!");
 				window.location="index.php?page=admin&action=modify&mode=trait";
