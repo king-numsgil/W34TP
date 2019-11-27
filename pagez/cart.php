@@ -212,7 +212,7 @@ if (isset($_GET["action"])) {
 							Total : <?= money_format('%.2n', $subtotal + ($subtotal * 0.15)) ?>
 						</li>
 						<li class="list-group-item" style="padding: 0">
-							<a class="btn btn-lg btn-success btn-block" href="#">
+							<a class="btn btn-lg btn-success btn-block" href="index.php?page=checkout">
 								Checkout
 							</a>
 						</li>
