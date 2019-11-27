@@ -61,9 +61,36 @@ VALUES ('Hannah', 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/01.png', 10),
        ('Bobby', 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/03.png', 19),
        ('Gerald', 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 'pics_test/04.png', 47),
        ('Troy', 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/05.png', 2),
+
        ('Yeep', 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 'pics_test/06.png', 25),
        ('Leia', 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 'pics_test/07.png', 68),
-       ('Daniel', 0, 0, 0, -5, 7, 0, 0, 0, 0, 0, 0, 'pics_test/08.png', 30);
+       ('Daniel', 0, 0, 0, -5, 7, 0, 0, 0, 0, 0, 0, 'pics_test/08.png', 30),
+	   ('Annie', 0, 0, 4, 0, 0, 0, 0, 1, 0, 0, 0, 'pics_test/09.png', 12),
+	   ('Felix', 0, 0, 7, 0, 0, 0, -2, 0, 0, 0, 2, 'pics_test/10.png', 35),
+
+	   ('Mitaku', 0, 0, 0, 0, 0, 0, 10, -5, 0, 0, 0, 'pics_test/11.png', 81),
+	   ('Jeremia', 0, 6, 0, 0, 0, 6, 0, 0, 0, 0, 0, 'pics_test/12.png', 13),
+	   ('Penelope', 0, 0, 0, 10, 0, 10, 0, 0, 0, 0, 0, 'pics_test/13.png', 74),
+	   ('Elsa', 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/14.png', 57),
+	   ('Dandr Fumperdink', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'pics_test/15.png', 420),
+
+	   ('Dr Moopiepoof', 0, 0, 0, -2, 0, 0, 0, 0, 8, 0, 0, 'pics_test/16.png', 29),
+	   ('Alexis', 0, 0, 0, -3, 3, 0, 0, 0, 0, 0, 0, 'pics_test/17.png', 1),
+	   ('Doodlepoofie', 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 'pics_test/18.png', 30),
+	   ('Snoogydumpy', 0, 0, 0, 0, 0, 7, 4, 0, 0, 1, 0, 'pics_test/19.png', 69),
+	   ('Marc-Andre', 10, 10, 10, 10, 15, 10, 10, 10, 10, 10, 10, 'pics_test/20.png', 999),
+
+	   ('Cutielove', 0, 0, 0, 0, 0, -5, 0, 0, 5, 0, 10, 'pics_test/21.png', 24),
+	   ('Foofiepoof', 10, 3, -5, 0, 0, 0, 0, 3, 0, 0, 0, 'pics_test/22.png', 35),
+	   ('Poofiewuggy', 0, 5, 0, -5, 0, 0, 0, 5, 0, 0, 0, 'pics_test/23.png', 35),
+	   ('Shnookumschooglips', 0, 0, 0, 0, 0, 0, 7, 0, 0, 7, 0, 'pics_test/24.png', 7),
+	   ('Wooglecute', 0, 0, 0, 0, 0, -5, 10, 0, 0, 0, 0, 'pics_test/25.png', 44),
+
+	   ('Jackflr', 0, 0, 10, 0, 5, 0, 0, 0, 0, 0, 0, 'pics_test/26.png', 76),
+	   ('Munph', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'pics_test/27.png', 9.5),
+	   ('Bonkface', 0, 0, 0, 0, 0, 4, 0, 4, 0, 4, 0, 'pics_test/28.png', 35),
+	   ('Kloronfomph', 6, 5, 8, 7, 10, 2, 3, 1, 9, 4, 0, 'pics_test/04.png', 100),
+	   ('Flulf', 0, 0, 0, 0, 0, 0, 5, 5, 0, 0, 5, 'pics_test/08.png', 29.75);
 
 create table traits
 (
@@ -104,7 +131,9 @@ VALUES ('Bottomless Stomach', false, 'Decreased <b>Callories</b>'),
        ('Interior Decorator', true, 'Increased <b>Creativity</b><br/>Decreased <b>Decor Morale Bonus</b>'),
        ('Uncultured', true, 'Increased <b>Decor Morale Bonus</b><br/>Cannot do <b>Decorating Errands</b>'),
        ('Mouth Breather', false, 'Increased <b>Air Consumption Rate</b>'),
-       ('Irritable Bowel', false, 'Decreased <b>Bathroom Use Speed</b>');
+       ('Irritable Bowel', false, 'Decreased <b>Bathroom Use Speed</b>'), /*25*/
+	   ('Godlike', true, 'Increased <b>Handsomeness</b><br/>Boosts <b>Morale</b> for other Duplicants'),
+	   ('Mortal', false, 'Still vulnerable to <b>Death</b><br/>Has basic needs');
 
 create table duplicant_traits
 (
@@ -129,4 +158,6 @@ VALUES (1, 1), (1, 2),
        (5, 14), (5, 11),
        (6, 13), (6, 8),
        (7, 17), (7, 22), (7, 4),
-       (8, 11), (8, 20);
+       (8, 11), (8, 20),
+	   (15, 11), (15, 18),
+	   (20, 26), (20, 27);
