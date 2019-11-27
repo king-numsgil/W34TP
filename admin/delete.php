@@ -7,11 +7,12 @@ if (!isset($_GET["mode"]) || empty($_GET["mode"])) {
 $mode = $_GET["mode"];
 
 if ($mode === "dupe") {
+	$name = $db->query("SELECT name FROM duplicants WHERE id = " . $_GET["id"])->fetch_assoc()["name"];
 	$db->query("DELETE FROM duplicant_traits WHERE dupe_id = " . $_GET["id"]);
 	$db->query("DELETE FROM duplicants WHERE id = " . $_GET["id"]);
 	?>
 	<script>
-		alert("Duplicant succesfully deleted. Goodbye, <?= $_GET['name']?>!");
+		alert("Duplicant succesfully deleted. Goodbye, <?= $name ?>!");
 		window.location = "index.php?page=admin&action=modify&mode=dupe";
 	</script>
 	<?php
@@ -25,8 +26,7 @@ if ($mode === "dupe") {
 			alert("This trait was succesfully deleted!");
 			window.location = "index.php?page=admin&action=modify&mode=trait";
 		</script>
-		<?php
-	} else { ?>
+	<?php } else { ?>
 		<script>
 			alert("Cannot delete this trait, unless you are heartless and want duplicants to lose a piece of their personnality... Anyway, no!");
 			window.location = "index.php?page=admin&action=modify&mode=trait";
